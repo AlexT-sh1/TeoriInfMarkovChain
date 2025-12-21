@@ -87,6 +87,14 @@ def create_and_save_markov_chains(text, db_params, max_length=14):
 
         print(f"Цепь загружена в базу")
 
+    cursor.execute("""
+            CREATE INDEX idx_markov_main ON markov_chains(chain_length, state);
+        """)
+
+    cursor.execute("""
+            CREATE INDEX idx_markov_state ON markov_chains(state);
+        """)
+    conn.commit()
     cursor.close()
     conn.close()
 

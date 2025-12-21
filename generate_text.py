@@ -23,7 +23,7 @@ while True:
         conn = psycopg2.connect(**DB_CONFIG)
         cursor = conn.cursor()
 
-        text = ""
+        text = " "
         state = text
         for i in range(500):
             found = False
